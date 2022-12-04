@@ -6,10 +6,11 @@ import { ITask } from 'src/app/models/interfaces/Task.interface';
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss']
 })
+
 export class TaskComponent implements OnInit {
 
   @Input() task: ITask | undefined;
-  @Output() delete: EventEmitter<ITask> = new EventEmitter<ITask>();
+  @Output() deleteTaskMethod: EventEmitter<ITask> = new EventEmitter<ITask>();
 
   constructor() { }
 
@@ -18,7 +19,7 @@ export class TaskComponent implements OnInit {
 
   deleteTask(){
     console.log("Eliminar tarea", this.task?.title);
-    this.delete.emit(this.task); //Notificamos al componente superior la tarea a eliminar.
+    this.deleteTaskMethod.emit(this.task); //Notificamos al componente superior la tarea a eliminar.
   }
 
 }
